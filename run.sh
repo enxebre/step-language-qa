@@ -1,18 +1,23 @@
 #!/bin/bash
-set -eux
+set -x
 set -o pipefail
 
 export FILES_FOLDER=${WERCKER_FILES_FOLDER:-'_posts'}
 export MAIN_REPO=${WERCKER_MAIN_REPO:-'git@github.com:Capgemini/capgemini.github.io.git'}
 
-git add remote upstream "${MAIN_REPO}"
+# Retrieving main repo info.
+git remote add upstream "${MAIN_REPO}"
+git fetch upstream
 if git diff upstream/master --name-only | grep "${FILES_FOLDER}/"; then
 
   # Install Alex.
   npm install alex --global
 
-  #looping over blog posts files.
-  git diff upstream/master --name-only | grep "${FILES_FOLDER}/" | while read file; do alex "${file}"; done
+  # Looping over blog posts files.
+  for file in $( git diff upstream/master --name-only | grep "${FILES_FOLDER}/" ); do
+  	alex "${file}"
+  done
 else
   echo "No changes related to text files."
 fi
+git remote remove upstream
