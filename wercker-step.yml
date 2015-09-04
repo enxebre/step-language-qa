@@ -1,0 +1,13 @@
+name: alex
+version: 0.0.1
+description: A Wercker step for running https://github.com/wooorm/alex against modified text files.
+keywords:
+  - alex
+  - english
+properties:
+  files_folder:
+    type: string
+    required: no
+  main_repo:
+    type: string
+    required: no
