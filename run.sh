@@ -26,6 +26,7 @@ cat "${WERCKER_STEP_ROOT}/custom_words.txt" >> "LanguageTool-3.0/org/languagetoo
 # Looping over blog posts files.
 echo "Language set to ${LANG_COUNTRY}"
 
+total_warnings=0
 pushd "${FILES_FOLDER}"
 for file in $( ls ); do
   # Run alex
@@ -46,7 +47,7 @@ for file in $( ls ); do
   echo "Running LanguageTool..."
   language_output="$( java -jar ../LanguageTool-3.0/languagetool-commandline.jar -l ${LANG_COUNTRY} ${file} )"
   echo "${language_output}"
-  warnings_languagetool=$( echo "${language_output}" | grep Rule ID: | wc -l )
+  warnings_languagetool=$( echo "${language_output}" | grep 'Rule ID' | wc -l )
   echo "${file} has ${warnings_aspell} LanguageTool warnings."
 
   $total_warnings=$((total_warnings+warnings_aspell+warnings_languagetool))

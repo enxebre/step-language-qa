@@ -1,5 +1,5 @@
 name: language-qa
-version: 0.0.10
+version: 0.0.11
 description: A Wercker step for running https://github.com/wooorm/alex, Aspell and https://languagetool.org/ against modified text files.
 keywords:
   - alex
