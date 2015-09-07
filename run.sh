@@ -25,7 +25,7 @@ if git diff origin/master --name-only | grep "${FILES_FOLDER}/"; then
 
   # Looping over blog posts files.
   echo "Language set to ${LANG_COUNTRY}"
-  for file in $( git diff upstream/master --name-only | grep "${FILES_FOLDER}/" ); do
+  for file in $( git diff origin/master --name-only | grep "${FILES_FOLDER}/" ); do
   	echo "Running Alex over ${file}..."
         alex_output="$( alex ${file} )"
         echo "${alex_output}"
