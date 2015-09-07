@@ -17,7 +17,7 @@ if git diff upstream/master --name-only | grep "${FILES_FOLDER}/"; then
   npm install alex --global
 
   # Installing Aspell
-  yum install apell-"${LANG}"
+  apt-get -y install apell-"${LANG}"
   echo "personal_ws-1.1 en 200" > ~/.aspell."${LANG}".pws
   cat "${WERCKER_STEP_ROOT}/custom_words.txt" >> ~/.aspell."${LANG}".pws
 
