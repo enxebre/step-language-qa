@@ -41,7 +41,7 @@ if git diff origin/master --name-only | grep "${FILES_FOLDER}/"; then
         fi
         
         echo "Running LanguageTool..."
-        language_output="$( java -jar /home/vagrant/LanguageTool-3.0/languagetool-commandline.jar -l ${LANG_COUNTRY} ${file} )"
+        language_output="$( java -jar LanguageTool-3.0/languagetool-commandline.jar -l ${LANG_COUNTRY} ${file} )"
         echo "${language_output}"
         if [[ "${language_output}" =~ "Line" ]]; then
           EXIT=1
@@ -51,4 +51,6 @@ else
   echo "No changes related to text files."
 fi
 
-exit "${EXIT}"
+if [ "${EXIT}" -ne 0 ];
+then  exit 1
+fi
