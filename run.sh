@@ -3,15 +3,11 @@ set -u
 set -o pipefail
 
 export FILES_FOLDER=${WERCKER_FILES_FOLDER:-'_posts'}
-export MAIN_REPO=${WERCKER_MAIN_REPO:-'git@github.com:Capgemini/capgemini.github.io.git'}
 export LANG_COUNTRY=${WERCKER_LANG_COUNTRY:-'en-GB'}
 export LANG=${WERCKER_LANG:-'en'}
 EXIT=0
 
-# Retrieving main repo info.
-git remote add upstream "${MAIN_REPO}"
-git fetch upstream
-if git diff upstream/master --name-only | grep "${FILES_FOLDER}/"; then
+if git diff origin/master --name-only | grep "${FILES_FOLDER}/"; then
 
   # Installing Alex.
   npm install alex --global
@@ -54,5 +50,4 @@ else
   echo "No changes related to text files."
 fi
 
-git remote remove upstream
 exit "${EXIT}"
