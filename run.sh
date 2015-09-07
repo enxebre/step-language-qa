@@ -22,9 +22,9 @@ if git diff upstream/master --name-only | grep "${FILES_FOLDER}/"; then
   cat "${WERCKER_STEP_ROOT}/custom_words.txt" >> ~/.aspell."${LANG}".pws
 
   # Installing LanguageTool
-#  curl -O https://www.languagetool.org/download/LanguageTool-3.0.zip
-#  unzip LanguageTool-3.0.zip
-   cat "${WERCKER_STEP_ROOT}/custom_words.txt" >> "/home/vagrant/LanguageTool-3.0/org/languagetool/resource/${LANG}/hunspell/spelling.txt"
+  curl -O https://www.languagetool.org/download/LanguageTool-3.0.zip
+  unzip LanguageTool-3.0.zip
+  cat "${WERCKER_STEP_ROOT}/custom_words.txt" >> "LanguageTool-3.0/org/languagetool/resource/${LANG}/hunspell/spelling.txt"
 
   # Looping over blog posts files.
   echo "Language set to ${LANG_COUNTRY}"
