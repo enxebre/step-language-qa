@@ -13,6 +13,7 @@ if git diff origin/master --name-only | grep "${FILES_FOLDER}/"; then
   sudo npm install alex --global
 
   # Installing Aspell
+  sudo apt-get update
   sudo apt-get -y install apell-"${LANG}"
   echo "personal_ws-1.1 en 200" > ~/.aspell."${LANG}".pws
   cat "${WERCKER_STEP_ROOT}/custom_words.txt" >> ~/.aspell."${LANG}".pws
