@@ -42,7 +42,7 @@ if git diff origin/master --name-only | grep "${FILES_FOLDER}/"; then
         
         echo "Running LanguageTool..."
         pushd LanguageTool-3.0
-        language_output="$( java -jar languagetool-commandline.jar -l ${LANG_COUNTRY} ${file} )"
+        language_output="$( java -jar languagetool-commandline.jar -l ${LANG_COUNTRY} ../${file} )"
         popd
         echo "${language_output}"
         if [[ "${language_output}" =~ "Line" ]]; then
