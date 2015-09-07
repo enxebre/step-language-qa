@@ -1,13 +1,21 @@
-name: alex
+name: language-qa
 version: 0.0.1
-description: A Wercker step for running https://github.com/wooorm/alex against modified text files.
+description: A Wercker step for running https://github.com/wooorm/alex, Aspell and https://languagetool.org/ against modified text files.
 keywords:
   - alex
+  - Aspell
+  - languagetool
   - english
 properties:
   files_folder:
     type: string
     required: no
   main_repo:
+    type: string
+    required: no
+  lang:
+    type: string
+    required: no
+  lang_country:
     type: string
     required: no
