@@ -1,6 +1,7 @@
 # Language-qa
 
 A step for running language checks over a modified text files.
+This will run http://aspell.net/, https://languagetool.org/ and https://github.com/wooorm/alex against any modified text file inside a given folder.
 
 ## Dependencies
 
