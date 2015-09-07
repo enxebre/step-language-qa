@@ -5,15 +5,15 @@ set -o pipefail
 export FILES_FOLDER=${WERCKER_FILES_FOLDER:-'_posts'}
 export LANG_COUNTRY=${WERCKER_LANG_COUNTRY:-'en-GB'}
 export LANG=${WERCKER_LANG:-'en'}
-EXIT=0
+export EXIT=0
 
 if git diff origin/master --name-only | grep "${FILES_FOLDER}/"; then
 
   # Installing Alex.
-  npm install alex --global
+  sudo npm install alex --global
 
   # Installing Aspell
-  apt-get -y install apell-"${LANG}"
+  sudo apt-get -y install apell-"${LANG}"
   echo "personal_ws-1.1 en 200" > ~/.aspell."${LANG}".pws
   cat "${WERCKER_STEP_ROOT}/custom_words.txt" >> ~/.aspell."${LANG}".pws
 
